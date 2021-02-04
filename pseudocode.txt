@@ -1,22 +1,6 @@
 ### Motif-mark Pseudocode ###
 
-### The problem:
-- Alternative splicing events arise from RNA-binding proteins (RBPs) that
-recognize sequence motifs on pre-mRNA strands to excise intronic and exonic
-regions. The exonic regions removed could be specific to different cell types
-or in response to cellular stresses / changes in environment that require 
-a certain protein isoform to perform a desired function. 
-    - Cassette exon (or exon skipping) is one example of an alternative 
-    splicing mechanism where one exon is left out of the primary transcript. 
-    It is the most common splicing mechanism in mammalian tissue. 
-- After removing the intronic and desired exonic regions, the pre-mRNA is 
-processed to produce a mature mRNA and distinct protein isoform that is 
-functionally different. 
-- Recognizing RBP motifs for each gene is important for understanding
-splicing locations, RBP motif biases, and downstream isoform functionality. 
-
-### The solution:
-- Given a FASTA file containing a set of genes known to be alternatively
+Given a FASTA file containing a set of genes known to be alternatively
 spliced, identify RBP motifs and draw a "to-scale" gene map with these 
 locations:
     - Intronic will be labeled with a thin, horizontal line spanning the 
@@ -34,20 +18,3 @@ locations:
         - Gene name / ID 
         - Chromosome number : coordinates 
         - Strand specificity (i.e., forward, reverse complement)
-
-### Required inputs:
-- A FASTA file containing gene sequences.
-    - Sequences should have lowercase letters for introns and UPPERCASE
-    letters for exons.
-    - Any combination of degenerate bases found in the sequence will be 
-    accepted.
-- A text or FASTA file containing the RBP motifs.
-- The gene map will be drawn to scale 
-
-### Algorithm outputs:
-- For each <file.fasta>, one image will be drawn containing all genes contained 
-in the file:
-    - Image will be saved in <file.svg> format. 
-    - Image is drawn to scale and will be sorted from largest gene to smallest.
-    - Image will contain a color-coded legend in the bottom right corner to 
-    denote different RBP motifs. 

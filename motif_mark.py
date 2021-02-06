@@ -5,6 +5,25 @@ import argparse
 import gzip
 import re
 import cairo
+import numpy as np
+
+# ### testing cairo - WORKS
+# with cairo.SVGSurface("example.svg", 200, 200) as surface:
+#     context = cairo.Context(surface)
+#     x, y, x1, y1 = 0.1, 0.5, 0.4, 0.9
+#     x2, y2, x3, y3 = 0.6, 0.1, 0.9, 0.5
+#     context.scale(200, 200)
+#     context.set_line_width(0.04)
+#     context.move_to(x, y)
+#     context.curve_to(x1, y1, x2, y2, x3, y3)
+#     context.stroke()
+#     context.set_source_rgba(1, 0.2, 0.2, 0.6)
+#     context.set_line_width(0.02)
+#     context.move_to(x, y)
+#     context.line_to(x1, y1)
+#     context.move_to(x2, y2)
+#     context.line_to(x3, y3)
+#     context.stroke()
 
 ### FILES ###
 fasta_file="/Users/agray11/bioinformatics/WINTER2021/BI625_ADVGEN/Figure_1.fasta"
@@ -86,12 +105,54 @@ def save_motifs(motif_file):
             LN += 1
             motif = motif.strip()
             #motif_dict.setdefault(motif,[motif.lower(), motif.upper()])
-            motif_dict.setdefault(motif,[motif, motif])
+            motif_dict.setdefault(motif,)
+            m = re.search(r"[^atgcATGC]", motif)
+            if m:
+                ambig =  m.group()
+                #print(ambig)
+                
 
     return motif_dict
 
 motif_dict = save_motifs(motif_file)
 print(motif_dict) # NEED TO COME BACK TO THIS!!!!!
+
+def sort_seqs(fasta_file):
+    """
+    Takes in the original <file.fasta> and sorts the headers and respective sequences
+    from the longest sequence to the shortest. Writes out to a new file.
+    """
+    header_dict = {}
+    seq_len = []
+    with open(fasta_file, 'r') as fasta_fh:
+        LN = 0
+        for line in fasta_fh:
+            LN += 1
+            # extract header lines
+            cum_sum = 0
+            if line.startswith(">") == True:
+                header = line.strip()
+            # sequence lines
+            else:
+                seq = line.strip("\n")
+                seq_len.append(seq)
+                print(seq_len)
+                #for i in seq_len:
+                    #seq_sum = np.cumsum(seq_len)
+                    #print(seq_sum)
+                    #cum_sum += len(seq)
+                    #for sums in seq_len:
+                header_dict.setdefault(header,)
+                
+                # for i in seq:
+                #     cum_seq_len += len(i)
+                #     print(cum_seq_len)
+                #print(seq)
+                #cum_seq_len += len(seq)
+                #print(cum_seq_len)
+    return header_dict
+header_dict = sort_seqs(fasta_file)
+#print(header_dict)
 
 # motif_dict = {}
 # with open(motif_file, 'r') as motif_fh:
@@ -157,4 +218,3 @@ print(motif_dict) # NEED TO COME BACK TO THIS!!!!!
 # } 
 
 # print(multiple_replace(dict, text))
-

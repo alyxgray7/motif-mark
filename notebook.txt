@@ -23,7 +23,29 @@
 
 ### Overall flow of script:
 1. Read in motif.txt
-    a. create dictionary of motif keys and all their possible sequences as keys.
+    - Use regex to search for ambiguous bases:
+    - If motif sequences contain ambiguous bases:
+        - Save to ambiguous motif list.
+        - For each ambiguous motif in the list:
+            - If ambiguous motif contains a "y" or "Y":
+                - Substitute with "c" 
+                - If new motif is not in motif_dictionary:
+                    - Add new motif to motif_dictionary.
+                
+                - Substitute with "C"
+                - Add new motif to motif_dictionary.
+                - 
+            - Split the motif by letters.
+            - Substitute the letter for the degenerate base.
+            - Add new motif sequence to motif_dictionary.
+        - Substitute base(s) according to the IUPAC_dict.
+    - Else the motif sequences contain regular bases:
+        - Add motif sequence to motif_dictionary.
+    - Create dictionary of motif keys.
+    - Search for ambiguous bases in motif dictionary.
+    - If motif keys contain ambiguous bases:
+        - Sub 
+
 2. Read in file.fasta 
     a. Sort reads from longest to shortest sequences
         i. Save largest image size
@@ -126,3 +148,18 @@ conda env export > ./base.yaml
 conda env create --name cairo --file base.yaml
 conda activate cairo 
 conda install -c conda-forge pycairo
+
+### Ran 'import cairo' in script and checked with example code see proper 
+install:
+https://github.com/pygobject/pycairo/blob/master/examples/pycairo_examples.ipynb
+
+### Counting the length of sequences in test file Figure_1.fasta:
+awk '/^>/ {if (seqlen){print seqlen}; print ;seqlen=0;next; } { seqlen += length($0)}END{print seqlen}' Figure_1.fasta 
+>INSR chr19:7150261-7150808 (reverse complement)
+548
+>MBNL chr3:152446461-152447003 
+543
+>ATP2A1 chr16:28903467-28904044 
+578
+>CLASP1 chr2:121444593-121445363 (reverse complement)
+771

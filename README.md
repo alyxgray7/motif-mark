@@ -2,14 +2,14 @@
 ***An algorithm to visualize RNA-binding protein motifs on a transcript sequence.***
 
 ### The problem:
-Alternative splicing events arise from RNA-binding proteins (RBPs) that recognize sequence motifs on pre-mRNA transcripts to excise intronic and exonic regions. The exonic regions removed could be specific to different cell types or in response to cellular stresses / changes in environment that require a certain protein isoform to perform a desired function. After removing the intronic and desired exonic regions, the pre-mRNA transcript is processed to produce a mature mRNA and distinct protein isoform that is functionally different. 
+Alternative splicing events are important modes of genetic regulation and is a source of protein diversity from the genome [^1]. Typically, splice sites at the intron/exon junctions direct the excision of introns from pre-mRNA transcripts by spliceosomes, but some regulatory sequences (motifs) bind other RNA-binding proteins (RBPs) that allow for multiple protein isoforms to be encoded by the same gene. The exonic regions removed could be specific to different cell types or in response to cellular stresses / changes in environment that require a certain protein isoform to perform a desired function. After removing the intronic and desired exonic regions, the pre-mRNA transcript is processed to produce a mature mRNA and distinct protein isoform that is functionally different. Alternative splicing mechanisms are highly variable and splicing variants are implicated in many human diseases.
 
 Cassette exon (or exon skipping) is one example of an alternative splicing mechanism where one exon is left out of the primary transcript. It is the most common splicing mechanism in mammalian tissue. 
 
 ![Image of exon skipping](../casset_exon.png) [^1]
 [^1]: Image adapted from Wikipedia (https://en.wikipedia.org/wiki/Alternative_splicing)
 
-***Recognizing RBP motifs for each gene is important for understanding splicing locations, RBP motif biases, and possible downstream isoform functionality.***
+***Recognizing motifs is important for understanding alternative splicing mechanisms.***
 
 ### How **motif-mark** works:
 Utilizing Pycairo, a *to-scale transcript map* will be drawn for any given gene/genes to easily visualize the introns, exons, and motfis.

@@ -1,0 +1,128 @@
+### Motif-mark Notebook ###
+
+#########################
+#####   02/04/2021  #####
+#########################
+
+### Given a <file.fasta> containing a set of genes, identify motifs given a 
+    <motif.txt>. Draw a "to-scale" gene map with these locations:
+    - Sort genes from largest to smallest.
+    - Label introns with a thin, horizontal line. 
+    - Label exons with a large, rectangular box.
+    - Label RBP motifs with tick marks, marked at the beginning of the motif 
+    sequence. 
+        - If the motif sequence is repeated consecutively in the sequence, place
+        a tick mark at the beginning of each open reading frame. 
+    - Color different motif tickmarks with different colors. 
+        - Put a legend on the top right of each outputted image.
+    - Label each gene with the header information contained in the FASTA file, 
+    for example:
+        - Gene name / ID 
+        - Chromosome number : coordinates 
+        - Strand specificity (i.e., forward, reverse complement)
+
+### Overall flow of script:
+1. Read in motif.txt
+    a. create dictionary of motif keys and all their possible sequences as keys.
+2. Read in file.fasta 
+    a. Sort reads from longest to shortest sequences
+        i. Save largest image size
+    b. Save header information in order of longest to shortest
+    c. Draw image based on largest sequence size 
+    d. Draw legend 
+    e. Make 1st gene header
+    f. Draw introns and exons based on sequence order 
+    g. Draw motif ticks (by motif color)
+    h. Repeat steps e-g for all genes 
+    i. Save image (.svg)
+3. Next fasta file (?) - Repeat #2
+
+### List of libraries to use based on current plan.
+import pycairo (need to install on environment)
+import argparse 
+import re 
+import itertools (Maybe???)
+
+### Thinking through functions:
+def argparse():
+"""
+This function will give a command line function to the script. 
+
+Required options:
+    - Absolute path to directory containing <file.fasta>.
+    - Absolute path to directory to save output <image.svg>. 
+    - Absolute path to <motif.txt>.
+
+Optional (???):
+    - Absolute path to <file.fasta>. 
+    (Need to consider how to do multiple files??)
+"""
+
+### Set up IUPAC variable for motif sequence combinations.
+vIUPAC = {
+    "A":["A"            ],
+    "C":[    "C"        ],
+    "G":[        "G"    ],
+    "T":[            "T"],
+    "U":[            "U"],
+    "W":["A",        "T"],
+    "S":[    "C","G"    ],
+    "M":["A","C"        ],
+    "K":[        "G","T"],
+    "R":["A",    "G",   ],
+    "Y":[    "C",    "T"],
+    "B":[    "C","G","T"],
+    "D":["A",    "G","T"],
+    "H":["A","C",    "T"],
+    "V":["A","C","G",   ],
+    "N":["A","C","G","T"],
+    "Z":[               ],
+}
+
+def read_motifs(motif.txt):
+"""
+Will read in the <motif.txt>, save the motif sequences, and create the possible 
+combinations of those sequences as a motif_dict. Will account for ambigous
+base changes. 
+
+The motif_dict will hold the motif sequence fed in by the <motif.txt> as keys
+and have values equal to it's possible nucleotide sequence combinations. 
+Example:
+
+{"ygcy":["tgct", "tgcc", "cgct", "cgcc", "ugcu", "ugcc", "cgcu"]}
+
+Needs to take into account specific and ambigous motifs-- if one sequence that 
+is specific (tgct) and ambiguous (ygcy), the specific one will go FIRST, then
+the ambiguous one will follow. Ambiguous key's can't have values of the specific 
+motif sequence. 
+Example:
+
+{"tgct":["tgct", "ugcu"], "ygcy":["tgcc", "cgct", "cgcc", "ugcc", "cgcu"]}
+"""
+
+def read_fasta(file.fasta):
+"""
+Reads in the <file.fasta>. Saves the order of the genes from longest to 
+shortest by the header information. Will output a dictionary where the key is 
+the gene number (1-10, based on order found in file.fasta)  
+"""
+
+def make_legend(motif_dict):
+"""
+Will read the keys from motif_dict and print a color-coded legened in the top 
+right corner of the <image.svg>.
+
+Needs to include a color-coding mechanism for each key in the dictionary.
+"""
+
+#########################
+#####   02/05/2021  #####
+#########################
+
+### Cloning my base environment to install pycairo 
+pwd
+/Users/agray11/bioinformatics/Winter2021/Bi625_AdvGen/
+conda env export > ./base.yaml
+conda env create --name cairo --file base.yaml
+conda activate cairo 
+conda install -c conda-forge pycairo

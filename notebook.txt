@@ -163,3 +163,18 @@ awk '/^>/ {if (seqlen){print seqlen}; print ;seqlen=0;next; } { seqlen += length
 578
 >CLASP1 chr2:121444593-121445363 (reverse complement)
 771
+
+#########################
+#####   02/07/2021  #####
+#########################
+
+### Setting up pycairo image illustratings
+There are 4 basic steps to creating an image:
+
+1. Create a Pycairo surface to hold your drawing
+2. Create a Pycairo context that you use to draw with
+3. Draw your shapes using the methods of the context object
+4. Save the surface to file
+
+How to create a surface:
+surface = cairo.ImageSurface(cairo.FORMAT_RGB24, 300, 200)

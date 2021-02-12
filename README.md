@@ -10,6 +10,14 @@ Cassette exon (or exon skipping) is one example of an alternative splicing mecha
 
 ***Recognizing motifs is important for understanding alternative splicing mechanisms.***
 
+***
+
+### Quick start
+
+```
+./motif_mark.py -f path/to/file.fasta -m path/to/motif.txt
+```
+
 ### How **motif-mark** works:
 Utilizing Pycairo, a *to-scale transcript map* will be drawn for any given gene/genes to easily visualize the introns, exons, and motfis.
 - Introns will be labeled with a thin, horizontal line.
@@ -43,3 +51,4 @@ in the file. *While any number of genes can be included in the file, the recomme
     - Any motif sequence in introns and exons will be identified, so upper or lower case letters don't need to be specified.
     - Each motif sequence should read line-by-line. 
     - ![See example](https://github.com/alyxgray7/motif-mark/blob/main/test_files/Fig_1_motifs.txt)
+

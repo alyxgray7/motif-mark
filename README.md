@@ -6,7 +6,7 @@ Alternative splicing events are important modes of genetic regulation and is a s
 
 Cassette exon (or exon skipping) is one example of an alternative splicing mechanism where one exon is left out of the primary transcript. It is the most common splicing mechanism in mammalian tissue. 
 
-![Image of exon skipping](/Users/agray11/bioinformatics/WINTER2021/BI625_ADVGEN/MOTIF_MARK/casset_exon.png) [^1]
+![Image of exon skipping](../MOTIF_MARK/casset_exon.png?raw=true "Title") [^1]
 [^1]: Image adapted from Wikipedia (https://en.wikipedia.org/wiki/Alternative_splicing)
 
 ***Recognizing motifs is important for understanding alternative splicing mechanisms.***

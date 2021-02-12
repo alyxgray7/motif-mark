@@ -6,7 +6,7 @@ Alternative splicing events are important modes of genetic regulation and is a s
 
 Cassette exon (or exon skipping) is one example of an alternative splicing mechanism where one exon is left out of the primary transcript. It is the most common splicing mechanism in mammalian tissue. 
 
-![Image of exon skipping](../casset_exon.png) [^1]
+![Image of exon skipping](casset_exon.png) [^1]
 [^1]: Image adapted from Wikipedia (https://en.wikipedia.org/wiki/Alternative_splicing)
 
 ***Recognizing motifs is important for understanding alternative splicing mechanisms.***
@@ -19,7 +19,7 @@ Utilizing Pycairo, a *to-scale transcript map* will be drawn for any given gene/
 - Different motif sequences will be labeled with different colors. A legend will be printed on the top right of each outputted image.
 - Each gene will be labeled with the header information contained in the `<file.fasta>`.
 
-![Example output](/Users/agray11/bioinformatics/WINTER2021/BI625_ADVGEN/MOTIF_MARK/motif-mark/Figure_1.svg)
+![Example output](Figure_1.svg)
 
 - For each `<file.fasta>`, one image will be drawn containing all genes contained 
 in the file. *While any number of genes can be included in the file, the recommended max is 10.* 

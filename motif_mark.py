@@ -311,7 +311,7 @@ for count, motif in enumerate(motif_list):
 
 ### Begin drawing image
 with cairo.SVGSurface(image_name, WIDTH, HEIGHT) as surface:
-    # start object for SVG surface
+    # Start object for SVG surface
     cr = cairo.Context(surface)
 
     # Header font information
